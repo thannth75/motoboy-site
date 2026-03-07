@@ -1,84 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nathan Moto Express</title>
+<title>Nathan Moto Express | Entregas rápidas</title>
 
 <meta name="description" content="Entregas rápidas em São Carlos SP">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
-background:#0a0a0a;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0b0b0b;
 color:white;
 overflow-x:hidden;
 }
 
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+header img{
+height:50px;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:14px;
+}
+
 .hero{
+
 height:100vh;
-background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
-background-size:cover;
-background-attachment:fixed;
+background:url("https://images.unsplash.com/photo-1511919884226-fd3cad34687c") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+position:relative;
+
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:10;
 }
 
 .hero h1{
-font-size:48px;
-color:#ffd000;
+font-size:45px;
+color:#FFD100;
+margin-bottom:10px;
 }
 
-.botao{
-background:#ffd000;
+.hero p{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.button{
+
+background:#FFD100;
 color:black;
-padding:15px 30px;
-font-size:20px;
-border-radius:30px;
+padding:15px 35px;
+border-radius:40px;
+font-weight:bold;
 text-decoration:none;
-display:inline-block;
-margin-top:20px;
+transition:0.3s;
+
+}
+
+.button:hover{
+transform:scale(1.05);
 }
 
 .section{
-padding:80px 20px;
+
+padding:100px 20px;
 text-align:center;
+
+}
+
+.section h2{
+color:#FFD100;
+margin-bottom:40px;
+font-size:32px;
+}
+
+.services{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+
 }
 
 .card{
-background:#111;
+
+background:#1b1b1b;
 padding:30px;
-margin:15px;
 border-radius:12px;
+transition:0.3s;
+
 }
 
-.servicos{
+.card:hover{
+transform:translateY(-8px);
+}
+
+.steps{
+
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
+gap:30px;
+
+}
+
+.step{
+max-width:250px;
+}
+
+.partner{
+
+background:#111;
+
+}
+
+.cta{
+
+background:#FFD100;
+color:black;
+padding:80px 20px;
+
+}
+
+.cta h2{
+color:black;
+}
+
+footer{
+
+padding:40px;
+text-align:center;
+background:black;
+color:#aaa;
+
 }
 
 .whatsapp{
+
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
+color:white;
 padding:18px;
 border-radius:50%;
 font-size:24px;
-}
 
-footer{
-background:black;
-padding:40px;
-text-align:center;
-color:#aaa;
 }
 
 </style>
@@ -87,71 +197,110 @@ color:#aaa;
 
 <body>
 
-<div class="hero">
+<header>
 
-<div>
+<img src="logo.png">
+
+<nav>
+
+<a href="#servicos">Serviços</a>
+<a href="#como">Como funciona</a>
+<a href="#parceiro">Motoboy</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
 
 <h1>Nathan Moto Express</h1>
 
 <p>Entregas rápidas em São Carlos</p>
 
-<a class="botao" href="https://wa.me/5516993635702?text=Olá%20quero%20solicitar%20uma%20entrega">
-Solicitar Entrega
-</a>
+<a class="button" href="https://wa.me/5516993635702?text=Olá%20quero%20solicitar%20uma%20entrega">Solicitar Entrega</a>
 
 </div>
 
-</div>
+</section>
 
-<div class="section">
+<section id="servicos" class="section">
 
 <h2>Serviços</h2>
 
-<div class="servicos">
+<div class="services">
 
 <div class="card">
-Documentos
-</div>
-
-<div class="card">
-Encomendas
+<h3>Entrega Expressa</h3>
+<p>Coleta e entrega rápida em qualquer ponto da cidade.</p>
 </div>
 
 <div class="card">
-Retirada de produtos
+<h3>Documentos</h3>
+<p>Entrega segura de contratos e documentos.</p>
 </div>
 
 <div class="card">
-Entregas comerciais
+<h3>Encomendas</h3>
+<p>Retirada em lojas, empresas ou residências.</p>
+</div>
+
+<div class="card">
+<h3>Serviços Personalizados</h3>
+<p>Qualquer tarefa que possa ser feita com uma moto.</p>
 </div>
 
 </div>
 
-</div>
+</section>
 
-<div class="section">
+<section id="como" class="section">
 
 <h2>Como funciona</h2>
 
-<p>1 - Solicite pelo WhatsApp</p>
+<div class="steps">
 
-<p>2 - Informamos o valor</p>
+<div class="step">
+<h3>1️⃣ Solicite</h3>
+<p>Entre em contato pelo WhatsApp.</p>
+</div>
 
-<p>3 - Retiramos e entregamos rapidamente</p>
+<div class="step">
+<h3>2️⃣ Coletamos</h3>
+<p>Buscamos o item no endereço informado.</p>
+</div>
+
+<div class="step">
+<h3>3️⃣ Entregamos</h3>
+<p>Entrega rápida no destino.</p>
+</div>
 
 </div>
 
-<div class="section">
+</section>
+
+<section id="parceiro" class="section partner">
 
 <h2>Seja Motoboy Parceiro</h2>
 
-<p>Em breve cadastro para novos entregadores.</p>
+<p>Estamos expandindo nossa rede de entregadores em São Carlos.</p>
 
-</div>
+<br>
 
-<a class="whatsapp" href="https://wa.me/5516993635702">
-💬
-</a>
+<a class="button" href="https://wa.me/5516993635702?text=Quero%20ser%20motoboy%20parceiro">Quero ser parceiro</a>
+
+</section>
+
+<section class="cta">
+
+<h2>Precisa de uma entrega agora?</h2>
+
+<br>
+
+<a class="button" href="https://wa.me/5516993635702">Solicitar no WhatsApp</a>
+
+</section>
 
 <footer>
 
@@ -159,6 +308,12 @@ Nathan Moto Express
 São Carlos - SP  
 
 </footer>
+
+<a class="whatsapp" href="https://wa.me/5516993635702">
+
+💬
+
+</a>
 
 </body>
 </html>
