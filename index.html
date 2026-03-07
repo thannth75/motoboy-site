@@ -24,9 +24,10 @@ color:white;
 overflow-x:hidden;
 }
 
-/* NAV */
+/* NAVBAR */
 
 header{
+
 position:fixed;
 top:0;
 width:100%;
@@ -35,12 +36,13 @@ justify-content:space-between;
 align-items:center;
 padding:15px 30px;
 background:rgba(0,0,0,0.7);
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 z-index:1000;
+
 }
 
 header img{
-height:50px;
+height:45px;
 }
 
 /* HERO */
@@ -52,27 +54,25 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+background:radial-gradient(circle,#111,#000);
 position:relative;
-
-background:radial-gradient(circle at center,#111,#000);
-
 overflow:hidden;
 
 }
 
-/* PARTICULAS */
+/* linhas de velocidade */
 
 .hero span{
 
 position:absolute;
 width:3px;
-height:80px;
+height:120px;
 background:linear-gradient(transparent,#FFD100);
-animation:lines 3s linear infinite;
+animation:speed 3s linear infinite;
 
 }
 
-@keyframes lines{
+@keyframes speed{
 
 0%{
 transform:translateY(-200px);
@@ -91,48 +91,39 @@ opacity:0;
 }
 
 .hero-content{
-position:relative;
 z-index:10;
 }
 
 .hero h1{
-
 font-size:52px;
 color:#FFD100;
-margin-bottom:10px;
-
 }
 
 .hero p{
-
-font-size:18px;
+margin-top:10px;
 opacity:0.8;
-margin-bottom:30px;
-
 }
-
-/* BOTAO */
 
 .button{
 
+display:inline-block;
+margin-top:25px;
+padding:15px 40px;
 background:#FFD100;
 color:black;
-padding:15px 40px;
 border-radius:40px;
-text-decoration:none;
 font-weight:bold;
+text-decoration:none;
 transition:0.3s;
 
 }
 
 .button:hover{
-
 transform:scale(1.1);
 box-shadow:0 0 25px #FFD100;
-
 }
 
-/* SECTION */
+/* SECTIONS */
 
 .section{
 
@@ -143,15 +134,15 @@ text-align:center;
 
 .section h2{
 
-font-size:32px;
-margin-bottom:40px;
 color:#FFD100;
+margin-bottom:40px;
+font-size:32px;
 
 }
 
 /* CARDS */
 
-.services{
+.grid{
 
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -170,25 +161,18 @@ transition:0.4s;
 
 .card:hover{
 
-transform:translateY(-12px);
+transform:translateY(-10px);
 box-shadow:0 0 25px rgba(255,209,0,0.4);
 
 }
 
-/* PASSOS */
+/* CONTADOR */
 
-.steps{
+.counter{
 
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-
-}
-
-.step{
-
-max-width:250px;
+font-size:40px;
+color:#FFD100;
+margin-top:10px;
 
 }
 
@@ -246,14 +230,11 @@ color:white;
 
 <section class="hero">
 
-<!-- linhas animadas -->
-
 <span style="left:10%"></span>
-<span style="left:25%"></span>
-<span style="left:40%"></span>
-<span style="left:55%"></span>
+<span style="left:30%"></span>
+<span style="left:50%"></span>
 <span style="left:70%"></span>
-<span style="left:85%"></span>
+<span style="left:90%"></span>
 
 <div class="hero-content">
 
@@ -275,38 +256,22 @@ Solicitar entrega
 
 <h2>Serviços</h2>
 
-<div class="services">
+<div class="grid">
 
 <div class="card">
-
-<h3>Entrega Expressa</h3>
-
-<p>Coleta e entrega rápida em qualquer ponto da cidade.</p>
-
+Entrega expressa pela cidade
 </div>
 
 <div class="card">
-
-<h3>Documentos</h3>
-
-<p>Entrega segura de contratos e documentos.</p>
-
+Entrega de documentos
 </div>
 
 <div class="card">
-
-<h3>Encomendas</h3>
-
-<p>Retirada em lojas, empresas ou residências.</p>
-
+Retirada em lojas
 </div>
 
 <div class="card">
-
-<h3>Serviços Personalizados</h3>
-
-<p>Qualquer tarefa que possa ser feita com uma moto.</p>
-
+Serviços personalizados
 </div>
 
 </div>
@@ -315,35 +280,27 @@ Solicitar entrega
 
 <section class="section">
 
-<h2>Como funciona</h2>
+<h2>Entregas realizadas</h2>
 
-<div class="steps">
+<div class="counter" id="contador">0</div>
 
-<div class="step">
+<p>entregas feitas na cidade</p>
 
-<h3>1️⃣ Solicite</h3>
+</section>
 
-<p>Entre em contato pelo WhatsApp.</p>
+<section class="section">
 
-</div>
+<h2>Seja motoboy parceiro</h2>
 
-<div class="step">
+<p>Estamos expandindo nossa equipe em São Carlos.</p>
 
-<h3>2️⃣ Coletamos</h3>
+<br>
 
-<p>Buscamos o item no endereço informado.</p>
+<a class="button" href="https://wa.me/5516993635702?text=Quero ser motoboy parceiro">
 
-</div>
+Quero trabalhar
 
-<div class="step">
-
-<h3>3️⃣ Entregamos</h3>
-
-<p>Entrega rápida no destino.</p>
-
-</div>
-
-</div>
+</a>
 
 </section>
 
@@ -373,6 +330,26 @@ São Carlos - SP
 💬
 
 </a>
+
+<script>
+
+let count = 0
+let target = 500
+
+let counter = document.getElementById("contador")
+
+let interval = setInterval(()=>{
+
+count++
+counter.innerText = count
+
+if(count >= target){
+clearInterval(interval)
+}
+
+},10)
+
+</script>
 
 </body>
 </html>
