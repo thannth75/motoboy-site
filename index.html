@@ -7,216 +7,9 @@
 
 <title>Nathan Moto Express</title>
 
+<link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
-
-/* NAVBAR */
-
-header{
-
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
-z-index:1000;
-
-}
-
-header img{
-height:45px;
-}
-
-/* HERO */
-
-.hero{
-
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:radial-gradient(circle,#111,#000);
-position:relative;
-overflow:hidden;
-
-}
-
-/* linhas de velocidade */
-
-.hero span{
-
-position:absolute;
-width:3px;
-height:120px;
-background:linear-gradient(transparent,#FFD100);
-animation:speed 3s linear infinite;
-
-}
-
-@keyframes speed{
-
-0%{
-transform:translateY(-200px);
-opacity:0;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-transform:translateY(120vh);
-opacity:0;
-}
-
-}
-
-.hero-content{
-z-index:10;
-}
-
-.hero h1{
-font-size:52px;
-color:#FFD100;
-}
-
-.hero p{
-margin-top:10px;
-opacity:0.8;
-}
-
-.button{
-
-display:inline-block;
-margin-top:25px;
-padding:15px 40px;
-background:#FFD100;
-color:black;
-border-radius:40px;
-font-weight:bold;
-text-decoration:none;
-transition:0.3s;
-
-}
-
-.button:hover{
-transform:scale(1.1);
-box-shadow:0 0 25px #FFD100;
-}
-
-/* SECTIONS */
-
-.section{
-
-padding:100px 20px;
-text-align:center;
-
-}
-
-.section h2{
-
-color:#FFD100;
-margin-bottom:40px;
-font-size:32px;
-
-}
-
-/* CARDS */
-
-.grid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-
-}
-
-.card{
-
-background:#111;
-padding:30px;
-border-radius:15px;
-transition:0.4s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(255,209,0,0.4);
-
-}
-
-/* CONTADOR */
-
-.counter{
-
-font-size:40px;
-color:#FFD100;
-margin-top:10px;
-
-}
-
-/* CTA */
-
-.cta{
-
-background:#FFD100;
-color:black;
-padding:80px 20px;
-
-}
-
-.cta h2{
-color:black;
-}
-
-/* FOOTER */
-
-footer{
-
-background:black;
-padding:40px;
-text-align:center;
-color:#777;
-
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:18px;
-border-radius:50%;
-font-size:22px;
-color:white;
-
-}
-
-</style>
 
 </head>
 
@@ -230,25 +23,11 @@ color:white;
 
 <section class="hero">
 
-<span style="left:10%"></span>
-<span style="left:30%"></span>
-<span style="left:50%"></span>
-<span style="left:70%"></span>
-<span style="left:90%"></span>
-
-<div class="hero-content">
-
 <h1>Nathan Moto Express</h1>
 
 <p>Entregas rápidas em São Carlos</p>
 
-<a class="button" href="https://wa.me/5516993635702?text=Olá quero solicitar uma entrega">
-
-Solicitar entrega
-
-</a>
-
-</div>
+<a class="btn" href="#pedido">Solicitar entrega</a>
 
 </section>
 
@@ -258,33 +37,32 @@ Solicitar entrega
 
 <div class="grid">
 
-<div class="card">
-Entrega expressa pela cidade
-</div>
-
-<div class="card">
-Entrega de documentos
-</div>
-
-<div class="card">
-Retirada em lojas
-</div>
-
-<div class="card">
-Serviços personalizados
-</div>
+<div class="card">Entrega expressa</div>
+<div class="card">Documentos</div>
+<div class="card">Encomendas</div>
+<div class="card">Serviços personalizados</div>
 
 </div>
 
 </section>
 
-<section class="section">
+<section id="pedido" class="section">
 
-<h2>Entregas realizadas</h2>
+<h2>Solicitar entrega</h2>
 
-<div class="counter" id="contador">0</div>
+<form id="formPedido">
 
-<p>entregas feitas na cidade</p>
+<input type="text" placeholder="Seu nome" id="nome" required>
+
+<input type="text" placeholder="Endereço de coleta" id="coleta" required>
+
+<input type="text" placeholder="Endereço de entrega" id="entrega" required>
+
+<textarea placeholder="Descrição do item"></textarea>
+
+<button type="submit">Enviar pedido</button>
+
+</form>
 
 </section>
 
@@ -292,29 +70,17 @@ Serviços personalizados
 
 <h2>Seja motoboy parceiro</h2>
 
-<p>Estamos expandindo nossa equipe em São Carlos.</p>
+<form id="formMoto">
 
-<br>
+<input type="text" placeholder="Nome">
 
-<a class="button" href="https://wa.me/5516993635702?text=Quero ser motoboy parceiro">
+<input type="text" placeholder="Telefone">
 
-Quero trabalhar
+<input type="text" placeholder="Cidade">
 
-</a>
+<button type="submit">Quero trabalhar</button>
 
-</section>
-
-<section class="cta">
-
-<h2>Precisa de uma entrega agora?</h2>
-
-<br>
-
-<a class="button" href="https://wa.me/5516993635702">
-
-Chamar no WhatsApp
-
-</a>
+</form>
 
 </section>
 
@@ -325,31 +91,9 @@ São Carlos - SP
 
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5516993635702">
+<a class="whatsapp" href="https://wa.me/5516993635702">💬</a>
 
-💬
-
-</a>
-
-<script>
-
-let count = 0
-let target = 500
-
-let counter = document.getElementById("contador")
-
-let interval = setInterval(()=>{
-
-count++
-counter.innerText = count
-
-if(count >= target){
-clearInterval(interval)
-}
-
-},10)
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
