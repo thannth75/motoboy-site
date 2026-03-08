@@ -1,80 +1,50 @@
 body{
-background:#050505;
+font-family:Arial;
+background:#0f0f0f;
 color:white;
-font-family:Poppins;
-text-align:center;
 margin:0;
+text-align:center;
 }
 
 header{
-padding:20px;
+background:#000;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 }
 
 header img{
-height:60px;
+height:40px;
 }
 
-.hero{
-padding:120px 20px;
-background:radial-gradient(circle,#111,#000);
-}
-
-h1{
-color:#FFD100;
-}
-
-.btn{
-background:#FFD100;
-padding:15px 30px;
-border-radius:30px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-}
-
-.section{
-padding:80px 20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-
-.card{
-background:#111;
-padding:30px;
-border-radius:12px;
-}
-
-form{
-display:flex;
-flex-direction:column;
-gap:10px;
-max-width:400px;
+main{
+padding:20px;
+max-width:600px;
 margin:auto;
 }
 
-input,textarea{
+input{
+width:100%;
 padding:12px;
-border:none;
+margin:10px 0;
 border-radius:6px;
+border:none;
 }
 
 button{
-padding:15px;
-background:#FFD100;
+padding:12px;
+margin:10px 0;
+background:#00c8ff;
 border:none;
+border-radius:6px;
 font-weight:bold;
-border-radius:30px;
+cursor:pointer;
+width:100%;
 }
 
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:18px;
-border-radius:50%;
+#map{
+height:300px;
+margin-top:20px;
 }
