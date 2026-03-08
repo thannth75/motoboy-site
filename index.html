@@ -1,289 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Nathan Moto Express</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
+<link rel="manifest" href="manifest.json">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 
-body{
-font-family: 'Orbitron', sans-serif;
-background:#0a0a0a;
-color:white;
-overflow-x:hidden;
-}
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-nav img{
-height:45px;
-}
-
-nav a{
-color:white;
-margin-left:25px;
-text-decoration:none;
-font-size:14px;
-}
-
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
-
-.hero h1{
-font-size:60px;
-letter-spacing:4px;
-}
-
-.hero p{
-margin-top:15px;
-font-size:18px;
-color:#aaa;
-}
-
-.bg{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:120%;
-background:linear-gradient(180deg,#111,#000);
-z-index:-2;
-}
-
-.grid{
-position:absolute;
-bottom:-200px;
-width:200%;
-height:600px;
-background-image:
-linear-gradient(#0ff 1px, transparent 1px),
-linear-gradient(90deg,#0ff 1px,transparent 1px);
-background-size:60px 60px;
-transform:rotateX(70deg);
-opacity:0.2;
-animation:gridmove 15s linear infinite;
-}
-
-@keyframes gridmove{
-0%{transform:rotateX(70deg) translateY(0);}
-100%{transform:rotateX(70deg) translateY(200px);}
-}
-
-.moto{
-position:absolute;
-bottom:120px;
-left:-200px;
-width:140px;
-animation:motoRide 8s linear infinite;
-}
-
-@keyframes motoRide{
-0%{left:-200px}
-100%{left:110%}
-}
-
-section{
-padding:120px 10%;
-text-align:center;
-}
-
-section h2{
-font-size:40px;
-margin-bottom:40px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#111;
-padding:30px;
-border-radius:12px;
-transition:0.4s;
-border:1px solid #222;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #00ffff50;
-}
-
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 35px;
-background:#00ffff;
-color:black;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
-
-footer{
-padding:60px;
-background:#050505;
-text-align:center;
-color:#777;
-}
-
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-padding:16px 20px;
-border-radius:40px;
-font-weight:bold;
-text-decoration:none;
-}
-
-</style>
 </head>
 
 <body>
 
-<nav>
-<img src="file_0000000096dc71f5be16340dbb6f5d78.png">
-<div>
-<a href="#servicos">Serviços</a>
-<a href="#sobre">Sobre</a>
-<a href="#contato">Contato</a>
-</div>
-</nav>
+<header>
 
-<div class="hero">
+<img src="logo.png">
 
-<div class="bg"></div>
-<div class="grid"></div>
+<h2>Nathan Moto Express</h2>
 
-<img class="moto" src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png">
+</header>
 
-<div>
-<h1>NATHAN MOTO EXPRESS</h1>
-<p>Entregas rápidas entre cidades até 450km</p>
+<main>
 
-<a class="btn" href="https://wa.me/5516993635702">
-Solicitar Entrega
-</a>
-</div>
+<h3>Solicitar Entrega</h3>
 
-</div>
+<input id="origem" placeholder="Endereço de coleta">
 
-<section id="servicos">
+<input id="destino" placeholder="Endereço de entrega">
 
-<h2>Serviços</h2>
+<button onclick="calcularFrete()">Calcular Frete</button>
 
-<div class="cards">
+<div id="resultado"></div>
 
-<div class="card">
-<h3>Entrega Expressa</h3>
-<p>Documentos e pacotes urgentes com máxima agilidade.</p>
-</div>
+<div id="map"></div>
 
-<div class="card">
-<h3>Entrega Intermunicipal</h3>
-<p>Transportes entre cidades até 450km.</p>
-</div>
+<button id="pedidoBtn" onclick="enviarPedido()" style="display:none;">
+Enviar pedido
+</button>
 
-<div class="card">
-<h3>Peças e Equipamentos</h3>
-<p>Coleta e entrega de peças automotivas e equipamentos.</p>
-</div>
+</main>
 
-<div class="card">
-<h3>Serviços Personalizados</h3>
-<p>Qualquer entrega possível com moto.</p>
-</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-</div>
-
-</section>
-
-<section id="sobre">
-
-<h2>Sobre a Empresa</h2>
-
-<p>
-
-A Nathan Moto Express nasceu com o objetivo de oferecer entregas rápidas,
-seguras e confiáveis entre cidades.
-
-Atendemos São Carlos e toda a região com entregas
-intermunicipais de até 450km.
-
-Nosso foco é agilidade, segurança e atendimento direto.
-
-</p>
-
-</section>
-
-<section id="contato">
-
-<h2>Contato</h2>
-
-<p>Solicite seu orçamento agora mesmo.</p>
-
-<a class="btn" href="https://wa.me/5516993635702">
-Falar no WhatsApp
-</a>
-
-</section>
-
-<footer>
-
-Nathan Moto Express © 2026  
-São Carlos - SP
-
-</footer>
-
-<a class="whatsapp" href="https://wa.me/5516993635702">
-WhatsApp
-</a>
-
-<script>
-
-window.addEventListener("scroll",function(){
-
-let scroll=window.scrollY;
-
-document.querySelector(".grid").style.transform =
-"rotateX(70deg) translateY("+scroll*0.3+"px)";
-
-});
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
