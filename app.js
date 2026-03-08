@@ -102,7 +102,7 @@ Entrega: ${destino}
 Distância: ${distanciaKm.toFixed(1)} km
 Valor estimado: R$ ${valor.toFixed(2)}`
 
-let url="https://wa.me/5516SEUNUMERO?text="+encodeURIComponent(texto)
+let url="https://wa.me/5516993635702?text="+encodeURIComponent(texto)
 
 window.open(url)
 
