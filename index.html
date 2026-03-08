@@ -32,9 +32,18 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 
 <h3>Solicitar Entrega</h3>
 
+<input id="cliente" placeholder="Nome do cliente">
+
+<input id="telefone" placeholder="Telefone">
+
 <input id="origem" placeholder="Endereço de coleta">
 
 <input id="destino" placeholder="Endereço de entrega">
+
+<label>
+<input type="checkbox" id="retorno">
+Precisa retornar ao endereço inicial
+</label>
 
 <button onclick="calcularFrete()">Calcular Frete</button>
 
@@ -42,8 +51,8 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 
 <div id="map"></div>
 
-<button id="pedidoBtn" onclick="enviarPedido()" style="display:none;">
-Enviar pedido
+<button id="pedidoBtn" onclick="enviarPedido()" style="display:none">
+Enviar Pedido
 </button>
 
 </main>
